@@ -48,7 +48,7 @@ The above
 library contains a Forth -> GLSL cross-compiler, based on word inlining
 and emulating a stack machine via multiple variables.
 
-The concept was inspired by Brad Nelson's [Forth
+The concept was inspired by [Brad Nelson](https://flagxor.com/)'s [Forth
 Haiku](https://forthsalon.appspot.com/), however here (as an exercise)
 the cross-compiler is entirely written in Forth itself...
 
