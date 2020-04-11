@@ -4,7 +4,7 @@
 
 This is a slightly updated version of my first
 [Forth](http://thinking-forth.sourceforge.net/) VM implementation from
-2015, originally written in JavaScript, now updated to TypeScript.
+2015, originally written in JavaScript, now updated to TypeScript. Charlie is named in honour of Charles Moore, inventor of Forth.
 
 Several parts of the VM and core vocabulary are based on @phaendal's
 [mkforth4-js](https://github.com/phaendal/mkforth4-js), which evolved in
@@ -22,10 +22,18 @@ Related projects resulting from this experiment:
 - [@thi.ng/pointfree-lang](https://github.com/thi-ng/umbrella/tree/develop/packages/pointfree-lang)
 - [thi.ng/synstack](https://github.com/thi-ng/synstack/)
 
-## YouTube videos
+## Videos / screencasts
 
 - [WebAudio multi-track synth & fx livecoding (from scratch)](https://youtu.be/NU4PSkA3pAE?t=130)
 - [Forth-to-GLSL shader transpiler](https://youtu.be/30s3mgrkzQ0?t=123)
+- [Mini text adventure (directed graph)](https://twitter.com/forthcharlie/status/618463324473303040)
+- [Closures & destructuring](https://twitter.com/forthcharlie/status/618090661137522688)
+- [Vector algebra](https://twitter.com/forthcharlie/status/616465114871504896)
+- [Lisp style cons](https://twitter.com/forthcharlie/status/616429574331744256)
+- [Prime numbers](https://twitter.com/forthcharlie/status/616296680225435649)
+- [Unit conversion](https://twitter.com/forthcharlie/status/616292997261598720)
+- [ASCII art](https://twitter.com/forthcharlie/status/616290572706430977)
+- [FizzBuzz](https://twitter.com/forthcharlie/status/616281804866211840)
 
 ## Libraries & demos
 
