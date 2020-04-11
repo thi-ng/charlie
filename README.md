@@ -17,7 +17,7 @@ The VM & REPL (10KB total) are available online via
 [forth.thi.ng](http://forth.thi.ng). The project has been online since
 2015, but was semi-broken due to CSS layout issues (now fixed).
 
-Related projects resulting from this experiment:ß
+Related projects resulting from this experiment:
 
 - [@thi.ng/pointfree-lang](https://github.com/thi-ng/umbrella/tree/develop/packages/pointfree-lang)
 - [thi.ng/synstack](https://github.com/thi-ng/synstack/)
@@ -103,7 +103,7 @@ dup 3 fade
 
 ### Web audio demo
 
-Source: [demo/popcorn.fs](https://github.com/thi-ng/charlie/tree/master/lib/popcorn.fs)
+Source: [demo/popcorn.fs](https://github.com/thi-ng/charlie/tree/master/demo/popcorn.fs)
 
 Usage in the REPL:
 
