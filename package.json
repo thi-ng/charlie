@@ -1,0 +1,26 @@
+{
+    "name": "@thi.ng/charlie",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "",
+    "author": "Karsten Schmidt <k+npm@thi.ng>",
+    "license": "MIT",
+    "scripts": {
+        "clean": "rm -rf .cache build out",
+        "build": "yarn clean && parcel build index.html -d out --public-url ./ --no-source-maps --no-cache --detailed-report --experimental-scope-hoisting && cp -R demo lib out/",
+        "start": "parcel index.html -p 8080 --open"
+    },
+    "dependencies": {
+        "@thi.ng/api": "^6.10.0"
+    },
+    "devDependencies": {
+        "parcel-bundler": "^1.12.4",
+        "typescript": "^3.8.3"
+    },
+    "browserslist": [
+        "last 3 Chrome versions"
+    ],
+    "browser": {
+        "process": false
+    }
+}
