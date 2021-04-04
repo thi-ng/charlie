@@ -16,7 +16,7 @@
   x y w h ctx dup "fillRect" js@ 4 js-call-n-with drop ;
 
 : gl-context ^( canvas -- gl )
-  "webgl" swap dup "getContext" js@ js-call-1-with ;
+  "webgl2" swap dup "getContext" js@ js-call-1-with ;
 
 *js-window* "WebGLRenderingContext" js@ val> *gl*
 
@@ -24,6 +24,7 @@
   gl dup type js@ swap dup "createShader" js@ js-call-1-with { shader }
   shader src gl dup "shaderSource" js@ js-call-2-with drop
   shader gl dup "compileShader" js@ js-call-1-with drop
+  ( shader gl dup "getShaderInfoLog" js@ js-call-1-with . )
   shader dup gl dup "COMPILE_STATUS" js@ swap dup "getShaderParameter" js@ js-call-2-with ;
 
 : gl-attach-shader ^( program shader gl -- )
