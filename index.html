@@ -1,250 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
-    />
-    <title>CharlieREPL</title>
-    <style type="text/css" media="screen">
-      .grid-container {
-        display: grid;
-        height: 100vh;
-        grid-template-columns: 80% 20%;
-        grid-template-rows: auto 10rem;
-        gap: 1px 1px;
-        grid-template-areas: "replout stack" "input exec";
-      }
+	<head>
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"
+		/>
+		<title>CharlieREPL</title>
+		<style type="text/css" media="screen">
+			.grid-container {
+				display: grid;
+				height: 100vh;
+				overflow: hidden;
+				grid-template-columns: 80% 20%;
+				grid-template-rows: auto 10rem;
+				gap: 1px 1px;
+				grid-template-areas: "replout stack" "input exec";
+			}
 
-      .stack {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: 1px 1px;
-        grid-template-areas: "ds" "rs";
-        grid-area: stack;
-      }
+			.stack {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr 1fr;
+				gap: 1px 1px;
+				grid-template-areas: "ds" "rs";
+				grid-area: stack;
+			}
 
-      .ds {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: min-content auto;
-        gap: 1px 1px;
-        grid-template-areas: "ds-head" "ds-items";
-        grid-area: ds;
-      }
+			.ds {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: min-content auto;
+				gap: 1px 1px;
+				grid-template-areas: "ds-head" "ds-items";
+				grid-area: ds;
+			}
 
-      .ds-head {
-        grid-area: ds-head;
-      }
+			.ds-head {
+				grid-area: ds-head;
+			}
 
-      #ds-items {
-        grid-area: ds-items;
-      }
+			#ds-items {
+				grid-area: ds-items;
+			}
 
-      .rs {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: min-content auto;
-        gap: 1px 1px;
-        grid-template-areas: "rs-head" "rs-items";
-        grid-area: rs;
-      }
+			.rs {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: min-content auto;
+				gap: 1px 1px;
+				grid-template-areas: "rs-head" "rs-items";
+				grid-area: rs;
+			}
 
-      .rs-head {
-        grid-area: rs-head;
-      }
+			.rs-head {
+				grid-area: rs-head;
+			}
 
-      #rs-items {
-        grid-area: rs-items;
-      }
+			#rs-items {
+				grid-area: rs-items;
+			}
 
-      #ds-items,
-      #rs-items {
-        max-height: calc((100vh - 14rem) / 2);
-      }
+			#ds-items,
+			#rs-items {
+				max-height: calc((100vh - 14rem) / 2);
+			}
 
-      .exec {
-        grid-area: exec;
-      }
+			.exec {
+				grid-area: exec;
+			}
 
-      .header {
-        grid-area: header;
-      }
+			.header {
+				grid-area: header;
+			}
 
-      #repl-out {
-        grid-area: replout;
-      }
+			#repl-out {
+				grid-area: replout;
+			}
 
-      .input {
-        grid-area: input;
-      }
+			.input {
+				grid-area: input;
+			}
 
-      body,
-      div,
-      pre,
-      textarea {
-        box-sizing: border-box;
-      }
+			body,
+			div,
+			pre,
+			textarea {
+				box-sizing: border-box;
+			}
 
-      [type="button"],
-      [type="reset"],
-      [type="submit"],
-      button {
-        -webkit-appearance: button;
-      }
-      button,
-      select {
-        text-transform: none;
-      }
-      button,
-      input {
-        overflow: visible;
-      }
-      button,
-      input,
-      optgroup,
-      select,
-      textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
-      }
+			[type="button"],
+			[type="reset"],
+			[type="submit"],
+			button {
+				-webkit-appearance: button;
+			}
+			button,
+			select {
+				text-transform: none;
+			}
+			button,
+			input {
+				overflow: visible;
+			}
+			button,
+			input,
+			optgroup,
+			select,
+			textarea {
+				font-family: inherit;
+				font-size: 100%;
+				line-height: 1.15;
+				margin: 0;
+			}
 
-      .code,
-      pre,
-      code {
-        font-family: Consolas, monaco, monospace;
-      }
+			.code,
+			pre,
+			code {
+				font-family: Consolas, monaco, monospace;
+			}
 
-      pre {
-        white-space: pre-wrap;
-        margin: 0;
-        padding: 0.5rem 0;
-      }
+			pre {
+				white-space: pre-wrap;
+				margin: 0;
+				padding: 0.5rem 0;
+			}
 
-      .f7 {
-        font-size: 0.75rem;
-      }
+			.f7 {
+				font-size: 0.75rem;
+			}
 
-      .bg-light-gray {
-        background-color: #eee;
-      }
+			.bg-light-gray {
+				background-color: #eee;
+			}
 
-      .bg-moon-gray {
-        background-color: #ccc;
-      }
+			.bg-moon-gray {
+				background-color: #ccc;
+			}
 
-      .bg-navy {
-        background-color: #001b44;
-      }
+			.bg-navy {
+				background-color: #001b44;
+			}
 
-      .washed-yellow {
-        color: #fffceb;
-      }
+			.washed-yellow {
+				color: #fffceb;
+			}
 
-      .w-100 {
-        width: 100%;
-      }
+			.w-100 {
+				width: 100%;
+			}
 
-      .h-100 {
-        height: 100%;
-      }
+			.h-100 {
+				height: 100%;
+			}
 
-      .ma0 {
-        margin: 0;
-      }
+			.ma0 {
+				margin: 0;
+			}
 
-      .pa0 {
-        padding: 0;
-      }
+			.pa0 {
+				padding: 0;
+			}
 
-      .pa2 {
-        padding: 0.5rem;
-      }
+			.pa2 {
+				padding: 0.5rem;
+			}
 
-      .overflow-y-scroll {
-        overflow-y: scroll;
-      }
+			.overflow-y-scroll {
+				overflow-y: scroll;
+			}
 
-      .overflow-x-hidden {
-        overflow-x: hidden;
-      }
+			.overflow-x-hidden {
+				overflow-x: hidden;
+			}
 
-      .bb {
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-      }
+			.bb {
+				border-bottom-style: solid;
+				border-bottom-width: 1px;
+			}
 
-      .repl-out-error {
-        background-color: #fcd;
-        color: #c00;
-        border-left: 5px solid #c00;
-        padding-left: 1rem;
-      }
-      .repl-out-code {
-        background-color: #ffa;
-        color: #960;
-        border-left: 5px solid #960;
-        padding-left: 1rem;
-      }
-      .repl-out-text {
-        background-color: #cfd;
-        color: #060;
-        border-left: 5px solid #060;
-        padding-left: 1rem;
-      }
-      .repl-out-help {
-        color: #12a;
-        background-color: #def;
-        border-left: 5px solid #116;
-        padding-left: 1rem;
-      }
+			.repl-out-error {
+				background-color: #fcd;
+				color: #c00;
+				border-left: 5px solid #c00;
+				padding-left: 1rem;
+			}
+			.repl-out-code {
+				background-color: #ffa;
+				color: #960;
+				border-left: 5px solid #960;
+				padding-left: 1rem;
+			}
+			.repl-out-text {
+				background-color: #cfd;
+				color: #060;
+				border-left: 5px solid #060;
+				padding-left: 1rem;
+			}
+			.repl-out-help {
+				color: #12a;
+				background-color: #def;
+				border-left: 5px solid #116;
+				padding-left: 1rem;
+			}
 
-      .stack-item {
-        background-color: #999;
-        font-size: 13px;
-        padding: 5px;
-        overflow-wrap: break-word;
-        margin: 5px 0;
-        color: white;
-      }
-    </style>
-    <script
-      async
-      defer
-      data-domain="forth.thi.ng"
-      src="https://plausible.io/js/plausible.js"
-    ></script>
-  </head>
-  <body class="bg-light-gray f7 code ma0">
-    <div class="grid-container">
-      <div class="stack bg-moon-gray">
-        <div class="ds pa2">
-          <div class="ds-head"><h4 class="ma0 w-100 bb">Data stack</h4></div>
-          <div id="ds-items" class="overflow-y-scroll"></div>
-        </div>
-        <div class="rs pa2">
-          <div class="rs-head"><h4 class="ma0 w-100 bb">Return stack</h4></div>
-          <div id="rs-items" class="overflow-y-scroll"></div>
-        </div>
-      </div>
-      <div class="exec">
-        <button id="bt-eval" class="w-100 h-100">EXECUTE</button>
-      </div>
-      <div
-        id="repl-out"
-        class="ma0 pa0 overflow-x-hidden overflow-y-scroll"
-      ></div>
-      <div class="input">
-        <textarea
-          id="repl-input"
-          class="w-100 h-100 code bg-navy washed-yellow pa2"
-          rows="5"
-        ></textarea>
-      </div>
-    </div>
-    <script type="text/javascript" src="src/index.ts"></script>
-  </body>
+			.stack-item {
+				background-color: #999;
+				font-size: 13px;
+				padding: 5px;
+				overflow-wrap: break-word;
+				margin: 5px 0;
+				color: white;
+			}
+		</style>
+	</head>
+	<body class="bg-light-gray f7 code ma0">
+		<div class="grid-container">
+			<div class="stack bg-moon-gray">
+				<div class="ds pa2">
+					<div class="ds-head">
+						<h4 class="ma0 w-100 bb">Data stack</h4>
+					</div>
+					<div id="ds-items" class="overflow-y-scroll"></div>
+				</div>
+				<div class="rs pa2">
+					<div class="rs-head">
+						<h4 class="ma0 w-100 bb">Return stack</h4>
+					</div>
+					<div id="rs-items" class="overflow-y-scroll"></div>
+				</div>
+			</div>
+			<div class="exec">
+				<button id="bt-eval" class="w-100 h-100">EXECUTE</button>
+			</div>
+			<div
+				id="repl-out"
+				class="ma0 pa0 overflow-x-hidden overflow-y-scroll"
+			></div>
+			<div class="input">
+				<textarea
+					id="repl-input"
+					class="w-100 h-100 code bg-navy washed-yellow pa2"
+					rows="5"
+				></textarea>
+			</div>
+		</div>
+		<script type="module" src="/src/index.ts"></script>
+	</body>
 </html>

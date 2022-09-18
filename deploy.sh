@@ -1,12 +1,12 @@
 #!/bin/sh
 
 readonly BUCKET="s3://forth.thi.ng"
-readonly OPTS="--profile toxi-s3 --acl public-read"
+readonly OPTS="--profile toxi-full --acl public-read"
 
-gzip -r -k -9 out
+gzip -r -k -9 dist
 
-for f in $(find out -name "*.gz"); do
-    src="${f/out\//}"
+for f in $(find dist -name "*.gz"); do
+    src="${f/dist\//}"
     dest="$BUCKET/${src%.gz}"
     name=$(basename -- "${f%.gz}")
     ext="${name##*.}"
