@@ -24,7 +24,9 @@ js-obj var> *glsl-dict*
 
 ( GLSL preamble )
 
-"#ifdef GL_FRAGMENT_PRECISION_HIGH
+"#version 300 es
+
+#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp int;
 precision highp float;
 #else
@@ -33,9 +35,9 @@ precision mediump float;
 #endif
 uniform vec2  resolution;
 uniform float time;
+layout(location=0) out vec4 fragColor;
 
-float seed = time;
-float random(vec2 p) {
+float random(in vec2 p, inout float seed) {
   seed = fract(sin(mod(seed + dot(p.xy, vec2(12.9898, 78.233)), 3.14)) * 43758.5453);
   return seed;
 }
@@ -44,6 +46,7 @@ float random(vec2 p) {
 ( main function header )
 
 "void main() {
+float seed = time;
 float _x = gl_FragCoord.x / resolution.x;
 float _y = gl_FragCoord.y / resolution.y;
 float tmp;
@@ -59,6 +62,7 @@ float tmp;
 : math-fn3  -2 ds! "(" 0 ds@ ", " 1 ds@ ", " 2 ds@ ")" + + + + + + + tos= ;
 : logic-op  -1 ds! 0 ds@ swap 1 ds@ " ? 1.0 : 0.0" + + + tos= ;
 : logic-op* -1 ds! 0 ds@ "bool" cast swap 1 ds@ "bool" cast " ? 1.0 : 0.0" + + + tos= ;
+: int-op2   -1 ds! 0 ds@ "int" cast swap 1 ds@ "int" cast + + "float" cast tos= ;
 
 : ->x       1 ds! "_x" tos= ;
 : ->y       1 ds! "_y" tos= ;
@@ -66,7 +70,7 @@ float tmp;
 : ->pi      1 ds! 3.14159265358979 tos= ;
 : ->half-pi 1 ds! 1.5707963267949 tos= ;
 : ->tau     1 ds! 6.28318530717959 tos= ;
-: ->random  1 ds! "random(gl_FragCoord.xy / resolution.xy)" tos= ;
+: ->random  1 ds! "random(gl_FragCoord.xy / resolution.xy, seed)" tos= ;
 : ->dup     1 ds! -1 ds@ tos= ;
 : ->2dup    2 ds! -2 ds@ "; " -1 ds@ " = " -3 ds@ + + + + tos= ;
 : ->over    1 ds! -2 ds@ tos= ;
@@ -100,6 +104,9 @@ float tmp;
 : ->not=       " != "       logic-op ;
 : ->and        " && "       logic-op* ;
 : ->or         " || "       logic-op* ;
+: ->bitand     " & "        int-op2 ;
+: ->bitor      " | "        int-op2 ;
+: ->bitxor     " ^ "        int-op2 ;
 : ->mod        "mod"        math-fn2 ;
 : ->pow        "pow"        math-fn2 ;
 : ->min        "min"        math-fn2 ;
@@ -133,7 +140,7 @@ float tmp;
   else "" then ;
 
 : glsl-frag-color
-  "gl_FragColor = "
+  "fragColor = "
   *dsp* @ 1+
   case/
     0 of      "0.0"   dup    dup "1.0" endof

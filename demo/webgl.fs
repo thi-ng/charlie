@@ -11,7 +11,9 @@ forthsalon.appspot.com
 "lib/bench.fs"
 include*
 
-"attribute vec2 position;
+"#version 300 es
+
+in vec2 position;
 uniform vec2  resolution;
 uniform float time;
 
@@ -54,7 +56,7 @@ nil var> *resolution*
   *js-window* "setInterval" js@ js-call-2 drop ;
 
 
-600 600 "webgl" make-canvas set> gl set> canvas
+600 600 "webgl2" make-canvas set> gl set> canvas
 
 glsl> x y t fract ;; dup .
 
