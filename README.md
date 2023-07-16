@@ -19,35 +19,35 @@ The VM & REPL (10KB total) are available online via
 
 Related projects resulting from this experiment:
 
-- [@thi.ng/pointfree-lang](https://github.com/thi-ng/umbrella/tree/develop/packages/pointfree-lang)
-- [thi.ng/synstack](https://github.com/thi-ng/synstack/)
+-   [@thi.ng/pointfree-lang](https://github.com/thi-ng/umbrella/tree/develop/packages/pointfree-lang)
+-   [thi.ng/synstack](https://github.com/thi-ng/synstack/)
 
 ## Videos / screencasts
 
-- [WebAudio multi-track synth & fx livecoding (from scratch)](https://youtu.be/NU4PSkA3pAE?t=130)
-- [Forth-to-GLSL shader transpiler](https://youtu.be/30s3mgrkzQ0?t=123)
-- [Mini text adventure (directed graph)](https://twitter.com/forthcharlie/status/618463324473303040)
-- [Closures & destructuring](https://twitter.com/forthcharlie/status/618090661137522688)
-- [Vector algebra](https://twitter.com/forthcharlie/status/616465114871504896)
-- [Lisp style cons](https://twitter.com/forthcharlie/status/616429574331744256)
-- [Prime numbers](https://twitter.com/forthcharlie/status/616296680225435649)
-- [Unit conversion](https://twitter.com/forthcharlie/status/616292997261598720)
-- [ASCII art](https://twitter.com/forthcharlie/status/616290572706430977)
-- [FizzBuzz](https://twitter.com/forthcharlie/status/616281804866211840)
+-   [WebAudio multi-track synth & fx livecoding (from scratch)](https://youtu.be/NU4PSkA3pAE?t=130)
+-   [Forth-to-GLSL shader transpiler](https://youtu.be/30s3mgrkzQ0?t=123)
+-   [Mini text adventure (directed graph)](https://twitter.com/forthcharlie/status/618463324473303040)
+-   [Closures & destructuring](https://twitter.com/forthcharlie/status/618090661137522688)
+-   [Vector algebra](https://twitter.com/forthcharlie/status/616465114871504896)
+-   [Lisp style cons](https://twitter.com/forthcharlie/status/616429574331744256)
+-   [Prime numbers](https://twitter.com/forthcharlie/status/616296680225435649)
+-   [Unit conversion](https://twitter.com/forthcharlie/status/616292997261598720)
+-   [ASCII art](https://twitter.com/forthcharlie/status/616290572706430977)
+-   [FizzBuzz](https://twitter.com/forthcharlie/status/616281804866211840)
 
 ## Libraries & demos
 
 The following libraries and demos are included (also available in the
 online REPL):
 
-- [lib/audio.fs](https://github.com/thi-ng/charlie/tree/master/lib/audio.fs)
-- [lib/bench.fs](https://github.com/thi-ng/charlie/tree/master/lib/bench.fs)
-- [lib/canvas.fs](https://github.com/thi-ng/charlie/tree/master/lib/canvas.fs)
-- [lib/glsl.fs](https://github.com/thi-ng/charlie/tree/master/lib/glsl.fs)
-- [lib/list.fs](https://github.com/thi-ng/charlie/tree/master/lib/list.fs)
-- [lib/math.fs](https://github.com/thi-ng/charlie/tree/master/lib/math.fs)
-- [lib/swizzle.fs](https://github.com/thi-ng/charlie/tree/master/lib/swizzle.fs)
-- [lib/synth.fs](https://github.com/thi-ng/charlie/tree/master/lib/synth.fs)
+-   [lib/audio.fs](https://github.com/thi-ng/charlie/tree/master/lib/audio.fs)
+-   [lib/bench.fs](https://github.com/thi-ng/charlie/tree/master/lib/bench.fs)
+-   [lib/canvas.fs](https://github.com/thi-ng/charlie/tree/master/lib/canvas.fs)
+-   [lib/glsl.fs](https://github.com/thi-ng/charlie/tree/master/lib/glsl.fs)
+-   [lib/list.fs](https://github.com/thi-ng/charlie/tree/master/lib/list.fs)
+-   [lib/math.fs](https://github.com/thi-ng/charlie/tree/master/lib/math.fs)
+-   [lib/swizzle.fs](https://github.com/thi-ng/charlie/tree/master/lib/swizzle.fs)
+-   [lib/synth.fs](https://github.com/thi-ng/charlie/tree/master/lib/synth.fs)
 
 ### GLSL live coding & cross-compiler
 
@@ -63,6 +63,7 @@ the cross-compiler is entirely written in Forth itself...
 Demo source: [demo/webgl.fs](https://github.com/thi-ng/charlie/tree/master/demo/webgl.fs)
 
 Usage in the REPL:
+
 ```
 ( this includes the cross-compiler automatically )
 "demo/webgl.fs" include*
@@ -74,6 +75,8 @@ lib/glsl for available functions):
 **IMPORTANT:** All shader code must be wrapped by `glsl> ... ;;`
 
 #### Liquid paint (ported from [GLSL](http://glslsandbox.com/e#8067.3))
+
+![screenshot](https://raw.githubusercontent.com/thi-ng/charlie/master/assets/liquid.jpg)
 
 ```
 glsl>
@@ -95,6 +98,8 @@ drop over over
 ```
 
 #### Disco floor (based on [Forth Haiku](https://forthsalon.appspot.com/haiku-view/ahBzfmZvcnRoc2Fsb24taHJkcg0LEgVIYWlrdRim4xMM)):
+
+![screenshot](https://raw.githubusercontent.com/thi-ng/charlie/master/assets/disco.jpg)
 
 ```
 glsl>
@@ -135,4 +140,3 @@ yarn start # start dev server
 
 yarn build # production build (written to /out)
 ```
-
