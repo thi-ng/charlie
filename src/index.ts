@@ -6,11 +6,11 @@
 // |::.. . |::.|:. |::.|:. |::.|:. |::.. . |::.|::.. . |       \:.. ./|::.|:. |
 // `-------`--- ---`--- ---`--- ---`-------`---`-------'        `---' `--- ---'
 //
-// (c) 2015 - 2020 Karsten Schmidt // MIT licensed
+// (c) 2015 - 2025 Karsten Schmidt // MIT licensed
 
-import { Charlie } from "./vm";
-import { KERNEL } from "./kernel";
-import { REPL } from "./repl";
+import { Charlie } from "./vm.js";
+import { KERNEL } from "./kernel.js";
+import { REPL } from "./repl.js";
 
 Charlie.interpreter(KERNEL);
 

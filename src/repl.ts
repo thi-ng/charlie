@@ -6,11 +6,11 @@
 // |::.. . |::.|:. |::.|:. |::.|:. |::.. . |::.|::.. . |       \:.. ./|::.|:. |
 // `-------`--- ---`--- ---`--- ---`-------`---`-------'        `---' `--- ---'
 //
-// (c) 2015 - 2020 Karsten Schmidt // MIT licensed
+// (c) 2015 - 2025 Karsten Schmidt // MIT licensed
 
 import type { Fn } from "@thi.ng/api";
 import { exposeGlobal } from "@thi.ng/expose";
-import type { IVM, Stack } from "./vm";
+import type { IVM, Stack } from "./vm.js";
 
 const MAX_HISTORY = 50;
 const MAX_SHOW = 200;

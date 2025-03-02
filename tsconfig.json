@@ -1,11 +1,12 @@
 {
-    "compilerOptions": {
-        "target": "es2020",
-        "module": "ES2020",
-        "moduleResolution": "node",
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "experimentalDecorators": true
-    },
-    "include": ["src/**/*.ts"]
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"experimentalDecorators": true,
+		"verbatimModuleSyntax": true
+	},
+	"include": ["src/**/*.ts"]
 }
