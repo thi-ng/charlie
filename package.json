@@ -1,6 +1,6 @@
 {
 	"name": "@thi.ng/charlie",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "index.js",
 	"repository": "https://github.com/thi-ng/charlie",
 	"author": "Karsten Schmidt <k+npm@thi.ng>",
@@ -9,15 +9,15 @@
 		"clean": "rm -rf .cache build out",
 		"start": "vite --open",
 		"build": "yarn clean && vite build --base='./' && cp -R demo lib dist/",
-		"preview": "yarn preview --host --open"
+		"preview": "vite preview --host --open"
 	},
 	"dependencies": {
-		"@thi.ng/api": "^8.4.1",
-		"@thi.ng/expose": "^1.1.10"
+		"@thi.ng/api": "^8.11.21",
+		"@thi.ng/expose": "^1.2.48"
 	},
 	"devDependencies": {
-		"typescript": "^4.8.3",
-		"vite": "^3.1.2"
+		"typescript": "^5.8.2",
+		"vite": "^6.2.0"
 	},
 	"browserslist": [
 		"last 3 Chrome versions"
