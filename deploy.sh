@@ -1,7 +1,7 @@
 #!/bin/sh
 
-readonly BUCKET="s3://forth.thi.ng"
-readonly OPTS="--profile toxi-full --acl public-read"
+readonly BUCKET="s3://forth-thi-ng"
+readonly OPTS="--profile thing-2025 --acl public-read"
 
 gzip -r -k -9 dist
 
