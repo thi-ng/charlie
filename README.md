@@ -114,6 +114,35 @@ dup 3 fade
 ;; reset
 ```
 
+#### Bump mapping (based on [Forth Haiku](https://forthsalon.appspot.com/haiku-view/ag5mb3J0aHNhbG9uLWhyZHINCxIFSGFpa3UY-OkWDA)):
+
+![screenshot](https://raw.githubusercontent.com/thi-ng/charlie/master/assets/bump.jpg)
+
+```
+glsl>
+: d dup ;
+: ' .5 - ;
+: r x ' d * y ' d * + sqrt ;
+: lx t 7 + 1.9 * sin 2 / ;
+: ly t 7 + 1.7 * sin 2 / ;
+: lr lx d * ly d * + .16 + sqrt ;
+: z r 80 * sin .7 * ;
+: m lr / * 0 max ;
+x ' r / z * lx m
+y ' r / z * ly m
+r 80 * cos .15 * .85 +
+.4 r 40 * cos 1 + 6 / + m
++ +
+1
+x ' lx - d *
+y ' ly - d *
++ sqrt
+- 0 max *
+d d * 2 /
+
+;; reset
+```
+
 ### Web audio demo
 
 Source: [demo/popcorn.fs](https://github.com/thi-ng/charlie/tree/master/demo/popcorn.fs)
