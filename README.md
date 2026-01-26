@@ -143,6 +143,31 @@ d d * 2 /
 ;; reset
 ```
 
+#### XOR tunnel (based on [Forth Haiku](https://forthsalon.appspot.com/haiku-view/ag5mb3J0aHNhbG9uLWhyZHINCxIFSGFpa3UY09wQDA)):
+
+![screenshot](https://raw.githubusercontent.com/thi-ng/charlie/master/assets/xortunnel.jpg)
+
+```
+glsl>
+: x' x 0.5 - t sin 0.2 * + ;
+: y' y 0.5 - t 1.5 * cos 0.2 * + ;
+: dist x' x' * y' y' * + sqrt ;
+: xor + abs 2 mod ;
+: b / floor 2 mod ;
+: m 256 * floor ;
+: a dup rot swap b -rot b xor ;
+: w dup
+
+x' y' atan2 pi / 512 * t 100 * + 256 mod
+128 dist / t 500 * + 256 mod
+
+rot a * ;
+1 w 2 w 4 w 8 w 16 w 32 w 64 w 128 w
++ + + + + + + 256 / dup dup
+
+;; reset
+```
+
 ### Web audio demo
 
 Source: [demo/popcorn.fs](https://github.com/thi-ng/charlie/tree/master/demo/popcorn.fs)
